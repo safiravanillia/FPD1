@@ -12,9 +12,9 @@ int main(int argc, char *argv[])
 
   for(i = 1; i < argc; i++){
 	if (unlink(argv[i]) == 0){
-		 printf(2, "berhasil mendelete");}
+		 printf(1, "berhasil mendelete file %s\n",argv[i]);}
 	 else{
-     		 printf(2, "gagal mendelete");}
+     		 printf(1, "gagal mendelete file %s\n",argv[i]);}
  
      
     } 

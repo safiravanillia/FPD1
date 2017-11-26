@@ -1,9 +1,6 @@
 #include "types.h"
 #include "stat.h"
-#include "user.h"
-#include "stdio.h"   
-#include "stdlib.h"
- 
+#include "user.h"  
 int main(int argc, char *argv[])
 {
   int i;
@@ -14,12 +11,12 @@ int main(int argc, char *argv[])
   }
 
   for(i = 1; i < argc; i++){
-	if (remove(argv[i]) == 0){
-		 printf("berhasil mendelete");}
+	if (unlink(argv[i]) == 0){
+		 printf(2, "berhasil mendelete");}
 	 else{
-     		 printf("gagal mendelete");}
+     		 printf(2, "gagal mendelete");}
  
       break;
     } 
- 
+ exit();
 }

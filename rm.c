@@ -1,5 +1,9 @@
+#include "types.h"
+#include "stat.h"
+#include "user.h"
 #include<stdio.h>   
 #include<stdlib.h>
+ 
 int main(int argc, char *argv[])
 {
   int i;
@@ -18,6 +22,3 @@ int main(int argc, char *argv[])
     } 
  
 }
-
-
- 

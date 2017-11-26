@@ -1,22 +1,23 @@
 #include "types.h"
 #include "stat.h"
 #include "user.h"
-#include<stdio.h>   
-#include<stdlib.h>
+#include "stdio.h"   
+#include "stdlib.h"
  
 int main(int argc, char *argv[])
 {
   int i;
 
   if(argc < 2){
-    printf("Usage: rm files...\n"); 
+    printf(2, "Usage: rm files...\n"); 
+    exit();
   }
 
   for(i = 1; i < argc; i++){
 	if (remove(argv[i]) == 0){
-		 printf("Deleted successfully");}
+		 printf("berhasil mendelete");}
 	 else{
-     		 printf("Unable to delete the file");}
+     		 printf("gagal mendelete");}
  
       break;
     } 

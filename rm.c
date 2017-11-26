@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	 else{
      		 printf(2, "gagal mendelete");}
  
-      break;
+     
     } 
  exit();
 }

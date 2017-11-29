@@ -11,4 +11,5 @@ int main (int argc, char *argv[]){
     printf(2, "mv %s to %s failed\n", argv[1], argv[2]);
 
   exit();
+  
 }

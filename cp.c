@@ -1,40 +1,46 @@
 #include "types.h"
 #include "stat.h"
 #include "user.h"
+#include "fs.h"
 #include "fcntl.h"
 
-int main(int argc, char *argv[]){
-  char buf[512];
-  int fd, dfd, r, w;
-  char *src, *dest;
+char buf[512];
 
-  if(argc != 3){
-    printf(2, "command: cp src dest\n");
+void
+cat(int fd1, int fd2)
+{
+  int n;
+
+  while((n = read(fd1, buf, sizeof(buf))) > 0) {
+    //write(1, buf, n);
+    printf(fd2, "%s", buf);
+  }
+  if(n < 0){
+    printf(1, "copy: read error\n");
     exit();
   }
+}
 
-  src = argv[1];
-  dest = argv[2];
-
-  if ((fd = open(src, O_RDONLY)) < 0) {
-    printf(2, "cp: cannot open source %s\n", src);
+int
+main(int argc, char *argv[])
+{
+  int fd1;
+  if(argc < 3){
+    printf(1, "copy: read error\n");
     exit();
   }
-  if ((dfd = open(dest, O_CREATE|O_WRONLY)) < 0) {
-    printf(2, "cp: cannot open destination %s\n", dest);
+  if((fd1 = open(argv[1], 0)) < 0){
+    printf(1, "copy: cannot open %s\n", argv[1]);
     exit();
   }
+  int fd2;
   
-  while ((r = read(fd, buf, sizeof(buf))) > 0) {
-    w = write(dfd, buf, r);
-    if (w != r || w < 0) 
-      break;
+  if ((fd2 = open(argv[2], O_CREATE | O_RDWR)) < 0) {
+    printf(1, "copy: error initializing file: %s\n", argv[2]);
+    exit();
   }
-  if (r < 0 || w < 0)
-    printf(2, "cp: error copying %s to %s\n", src, dest);
-
-  close(fd);
-  close(dfd);
-
+  cat(fd1,fd2);
+  close(fd1);
+  close(fd2);
   exit();
 }

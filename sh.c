@@ -161,7 +161,7 @@ main(void)
       // Chdir must be called by the parent, not the child.
       buf[strlen(buf)-1] = 0;  // chop \n
       if(chdir(buf+3) < 0)
-        printf(2, "cannot cd %s\n", buf+3);
+        printf(2, "unable locate directory : %s\n", buf+3);
       continue;
     }
     if(fork1() == 0)

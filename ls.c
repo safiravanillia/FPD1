@@ -41,7 +41,9 @@ ls(char *path)
 
   switch(st.type){
   case T_FILE:
-    printf(1, "%s %d %d %d\n", fmtname(path), st.type, st.ino, st.size);
+    printf(1, "Name           Type  Index    Size\n");
+    if(st.ino<10) printf(1, "%s File       %d      %d\n", fmtname(path), st.ino, st.size);
+    else printf(1, "%s File    %d     %d\n", fmtname(path), st.ino, st.size);
     break;
 
   case T_DIR:
@@ -49,6 +51,7 @@ ls(char *path)
       printf(1, "ls: path too long\n");
       break;
     }
+    printf(1, "Name           Type         Index    Size\n");
     strcpy(buf, path);
     p = buf+strlen(buf);
     *p++ = '/';
@@ -61,7 +64,18 @@ ls(char *path)
         printf(1, "ls: cannot stat %s\n", buf);
         continue;
       }
-      printf(1, "%s %d %d %d\n", fmtname(buf), st.type, st.ino, st.size);
+      if(st.type==1){
+        if(st.ino<10) printf(1, "%s Directory      %d      %d\n", fmtname(buf), st.ino, st.size);
+    	else printf(1, "%s Directory      %d     %d\n", fmtname(buf), st.ino, st.size);
+      }
+      else if(st.type==2){
+	     if(st.ino<10) printf(1, "%s File           %d      %d\n", fmtname(buf), st.ino, st.size);
+    	     else printf(1, "%s File           %d     %d\n", fmtname(buf), st.ino, st.size);
+      }
+      else if(st.type==3){
+	     if(st.ino<10) printf(1, "%s Device        %d      %d\n", fmtname(buf), st.ino, st.size);
+    	     else printf(1, "%s Device         %d     %d\n", fmtname(buf), st.ino, st.size);
+      }
     }
     break;
   }

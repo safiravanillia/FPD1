@@ -13,7 +13,7 @@ int main(int argc, char *argv[]){
   
   }
   for(i = 1; i < argc; i++){
-	if (unlink(argv[i]) == 0){
+	if (unlink(argv[i]) == 0)
 		 printf(1, "berhasil menghapus %s\n",argv[i]);
     } 
  exit();

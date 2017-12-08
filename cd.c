@@ -12,7 +12,7 @@ main(int argc, char *argv[])
     exit();
   }
 
-  if(mkdir(argv[1]) < 0){
+  if(chdir(argv[1]) < 0){
     printf(2, "cd: %s failed to change directory\n", argv[i]);
   }
 

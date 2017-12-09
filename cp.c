@@ -42,7 +42,7 @@ int main(int argc, char *argv[]){
   	exit();
   } //cp biasa : copy 1/lebih file
   else if(argc>=3){
-	for(i=1;i<argc-2;i++){
+	for(i=1;i<argc-1;i++){
 		if((fd1 = open(argv[i], 0)) < 0){
     			printf(1, "copy: cannot open %s\n", argv[1]);
     			exit();

@@ -177,3 +177,16 @@ void Update_Context(md5context_t * ctx, byte * input, uint64 len){
 void Finalization(md5context_t * ctx, byte * hash){
     Encode(ctx->state, hash);
 }
+
+void printmsg(unsigned char *msg,unsigned int len)
+{
+	unsigned int i;
+	const char base16[16] = {
+		'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+	for(i=0;i<len;i++)
+	{
+		printf(1,"%c",base16[(((int)msg[i]&0xf0)>>4)]);
+		printf(1,"%c",base16[(((int)msg[i]&0xf))]);
+	}
+	printf(1,"\n");
+}

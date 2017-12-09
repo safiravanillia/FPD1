@@ -7,6 +7,6 @@
 int
 main(int argc, char *argv[])
 {
-  printf(1, "\033[2J\033[1;1H\n");
-  exit();
+  printf(1, "\033[2J\033[;H"); 
+ exit();
 }
